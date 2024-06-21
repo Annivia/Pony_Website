@@ -1,4 +1,4 @@
-hugo
+~/Documents/.hugo/hugo
 cd public
 git add --all
 git commit -m "update"
