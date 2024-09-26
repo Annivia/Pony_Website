@@ -75,8 +75,10 @@ email: 'ponyz@umich.edu'
 highlight_name: true
 ---
 
-I'm Xijia, an incoming Ph.D. student at Georgia Institute of Technology advised by Professor Matthew Gombolay. 
+Hi I'm Xijia (Polina), a Ph.D. student at Georgia Institute of Technology advised by Professor Matthew Gombolay. 
 I have always been passionate about research and technical advances with positive societal impact, especially in the context of robotics. As robots transition from research labs to the real world, it is critical that we develop methods for establishing mutual understanding between humans and robots to bridge the communication, transparency, and collaboration gap between them. These challenges have motivated my general interest in Human-Robot Interaction, Explainable Artificial Intelligence, RLHF, Natural Language Processing, and Collaborative Decision Making.
+
+Starting from 2024, I publish under the name Zhang Xi-Jia.
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
 View my {{< staticref "https://scholar.google.com/citations?user=jylrilYAAAAJ&hl=en" "newtab" >}}papers{{< /staticref >}}.

@@ -4,10 +4,6 @@ subtitle: An incredible summer at Carnegie Mellon University
 summary: An incredible summer at Carnegie Mellon University
 authors:
   - admin
-  - Yue Guo
-  - Simon Stepputtis
-  - Joseph Campbell
-  - Katia Sycara
 tags: []
 categories: []
 projects: []
