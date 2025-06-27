@@ -1,6 +1,6 @@
 ---
 # Display name
-title: Xijia Zhang
+title: Zhang Xi-Jia
 
 # Full name (for SEO)
 first_name: Xijia
@@ -22,10 +22,11 @@ bio: My research interests include human-robot interaction, explainable artifici
 
 # Interests to show in About widget
 interests:
-  - Human-Robot Interaction
+  - Foundation Models
+  - Reasoning Models
   - Interpretability
-  - Embodied AI
-  - Natural Language Processing
+  - Scaling Laws
+  - Emergent Intelligence
 
 # Education to show in About widget
 education:
@@ -75,10 +76,10 @@ email: 'zhang.xijia@gatech.edu'
 highlight_name: true
 ---
 
-Hi I'm Xijia (Polina), a Ph.D. student at Georgia Institute of Technology advised by Professor Matthew Gombolay. 
-I have always been passionate about research and technical advances with positive societal impact, especially in the context of robotics. As robots transition from research labs to the real world, it is critical that we develop methods for establishing mutual understanding between humans and robots to bridge the communication, transparency, and collaboration gap between them. These challenges have motivated my general interest in Human-Robot Interaction, Explainable Artificial Intelligence, RLHF, Natural Language Processing, and Collaborative Decision Making.
+Hi, I’m Xijia Polina Zhang, a Ph.D. student at Georgia Institute of Technology advised by Professor Matthew Gombolay. I’m interested in how reasoning capabilities emerge and evolve in large-scale foundation models, and whether we could meaningfully interfere with, interpret and align them. I’m also actively involved in work on explainable AI, human robot interaction, and reinforcement learning.
 
-Starting from 2024, I publish under the name Zhang Xi-Jia.
+I publish under the name Zhang Xi-Jia, similar to the convention followed by {{< staticref "https://en.wikipedia.org/wiki/Fei-Fei_Li" "newtab" >}}Li Fei-Fei{{< /staticref >}}. In many Asian cultures, surnames are common and not reliable as personal identifiers. My surname Zhang, for example, is shared by over 100 million people worldwide.
+
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
 View my {{< staticref "https://scholar.google.com/citations?user=jylrilYAAAAJ&hl=en" "newtab" >}}papers{{< /staticref >}}.

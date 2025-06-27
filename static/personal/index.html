@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张皙佳 Polina</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #0c0c14;
+            color: white;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./b1.jpg');
+            background-size: cover;
+            background-position: center;
+            transition: filter 0.5s ease;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: rgba(15, 15, 25, 0.75);
+            border-radius: 1rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(50px);
+            opacity: 0;
+            animation: fadeIn 1s forwards 0.5s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .title-container {
+            text-align: center;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 0 0 10px rgba(255, 100, 255, 0.8);
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: titleIn 1.5s forwards;
+            background: linear-gradient(45deg, #ff78f7, #6e94ff, #ff78f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: titleIn 1.5s forwards, shine 5s linear infinite;
+        }
+
+        @keyframes titleIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .section {
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            border-bottom: 2px solid rgba(255, 150, 255, 0.3);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            color: #b485ff;
+            opacity: 0;
+            animation: fadeIn 0.8s forwards;
+            animation-delay: calc(var(--delay) * 0.2s);
+        }
+
+        ul {
+            list-style-position: inside;
+            margin-left: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+            animation-delay: calc(var(--delay) * 0.2s);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+            animation-delay: calc(var(--delay) * 0.2s);
+        }
+
+        .blur-control {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            background: rgba(30, 30, 50, 0.8);
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .blur-control label {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #d8b5ff;
+        }
+
+        .blur-control input {
+            width: 100%;
+        }
+
+        .highlight {
+            color: #ff9ee0;
+            font-weight: bold;
+        }
+
+        .section-name {
+            --delay: 1;
+        }
+        
+        .section-hobbies {
+            --delay: 2;
+        }
+        
+        .section-facts {
+            --delay: 3;
+        }
+        
+        .section-private {
+            --delay: 4;
+        }
+        
+        .section-cities {
+            --delay: 5;
+        }
+        
+        .section-dream {
+            --delay: 6;
+        }
+        
+        .section-blog {
+            --delay: 7;
+        }
+    </style>
+</head>
+<body>
+    <div class="background" id="background"></div>
+    
+    <div class="container">
+        <div class="title-container">
+            <h1 class="title">无数渺小的思考 组成了我的一生</h1>
+        </div>
+        
+        <div class="section section-name">
+            <h2>Name in Chinese</h2>
+            <p>张皙佳</p>
+        </div>
+        
+        <div class="section section-hobbies">
+            <h2>Hobbies</h2>
+            <ul>
+                <li>Snowboarding</li>
+                <li>Figure ice skating</li>
+                <li>Snorkeling</li>
+                <li>Raving (electronic dance music)</li>
+                <li>Catan</li>
+            </ul>
+            <p>Please reach out if you wanna hit the slopes together, I would love that.</p>
+        </div>
+        
+        <div class="section section-facts">
+            <h2>Publicly Available Fun Facts</h2>
+            <ul>
+                <li>My license plate is my name.</li>
+                <li>I don't eat rice. Not even in a Chinese restaurant.</li>
+                <li>I have never seen a banana tree.</li>
+            </ul>
+        </div>
+
+        <div class="section section-dream">
+            <h2>Dream</h2>
+            <p>Live together with a house of robots. A robot dog to pet, a robot arm to cook, a robot spider to dance with, a robot drone for no reason, and maybe a robot boyfriend.</p>
+        </div>
+        
+        <div class="section section-blog">
+            <h2>Blog</h2>
+            <p>Would be added in the future, solely depending on my mood.</p>
+        </div>
+    </div>
+    
+    <div class="blur-control">
+        <label for="blur-slider">Background Blur</label>
+        <input type="range" id="blur-slider" min="0" max="20" value="2">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const blurSlider = document.getElementById('blur-slider');
+            const background = document.getElementById('background');
+            
+            // Set initial blur
+            background.style.filter = `blur(${blurSlider.value}px)`;
+            
+            // Update blur on slider change
+            blurSlider.addEventListener('input', function() {
+                background.style.filter = `blur(${this.value}px)`;
+            });
+            
+            // Add animation delay to all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((section, index) => {
+                const elements = section.querySelectorAll('h2, p, li');
+                elements.forEach((el, i) => {
+                    el.style.setProperty('--delay', index + i * 0.1 + 1);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot Teaching Study</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .page {
+            display: none;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .active {
+            display: block;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        button.green {
+            background-color: #2ecc71;
+        }
+        button.green:hover {
+            background-color: #27ae60;
+        }
+        button.red {
+            background-color: #e74c3c;
+        }
+        button.red:hover {
+            background-color: #c0392b;
+        }
+        .link-container {
+            margin: 15px 0;
+        }
+        .button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+        .button.green {
+            background-color: #2ecc71;
+        }
+        .button.green:hover {
+            background-color: #27ae60;
+        }
+        select {
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .option-group {
+            margin-bottom: 20px;
+        }
+        .video-container {
+            margin: 20px 0;
+        }
+        input[type="text"] {
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 10px;
+        }
+        .task {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 0: Runner Setup (Research Team Only) -->
+    <div id="page0" class="page active">
+        <h1>Study Setup (Researcher Only)</h1>
+        <div class="option-group">
+            <label for="domainOrder">Domain Order:</label>
+            <select id="domainOrder">
+                <option value="ST">Soil Mixing First (ST)</option>
+                <option value="TS">Table Setting First (TS)</option>
+            </select>
+        </div>
+        <div class="option-group">
+            <label for="feedbackCondition">Feedback Condition:</label>
+            <select id="feedbackCondition">
+                <option value="N">None (N)</option>
+                <option value="F">LLM Feedback Only (F)</option>
+                <option value="A">AR Feedback Only (A)</option>
+                <option value="B">Both Feedback Types (B)</option>
+            </select>
+        </div>
+        <button onclick="setupStudy()">Start Study</button>
+    </div>
+
+    <!-- Page 1: Welcome and Consent -->
+    <div id="page1" class="page">
+        <h1>Welcome to the Robot Teaching Study</h1>
+        <p>Thank you for coming in today. We will start with a consent form.</p>
+        <p><strong>Instructions for researcher:</strong></p>
+        <ul>
+            <li>Give consent form to participant</li>
+            <li>Ensure there are two signatures</li>
+            <li>Confirm participant selected one of three options for second signature</li>
+            <li>Sign the form yourself</li>
+            <li>Store in binder</li>
+        </ul>
+        <button onclick="nextPage()">Continue</button>
+    </div>
+
+    <!-- Page 2: Email Collection -->
+    <div id="page2" class="page">
+        <h1>Compensation Information</h1>
+        <p>We will first collect your email, which we will use to send you the gift card.</p>
+        <div class="link-container">
+            <a href="" id="compensationSurveyLink" target="_blank" class="button green">Open Compensation Survey</a>
+        </div>
+        <button onclick="nextPage()">Continue</button>
+    </div>
+
+    <!-- Page 3: Initial Survey -->
+    <div id="page3" class="page">
+        <h1>Experimenter Page</h1>
+        <p>Great, now let's begin the study. Experimenter should fill out the first stage of this survey. You should fill out the rest</p>
+        <p><strong>Note:</strong> If you go "back" your data will be lost.</p>
+        <div class="link-container">
+            <a href="" id="initialSurveyLink" target="_blank" class="button green">Open Initial Survey</a>
+        </div>
+        <button onclick="nextPage()">Continue</button>
+    </div>
+
+    <!-- Page 4: Intro Video -->
+    <div id="page4" class="page">
+        <h1>Introduction Video</h1>
+        <p>Alright. Now, you'll watch a brief introductory video that will teach you about the study.</p>
+        <div class="video-container">
+            <div class="link-container">
+                <a href="" id="introVideoLink" target="_blank" class="button green">Play Introduction Video</a>
+            </div>
+        </div>
+        <button onclick="nextPage()">Continue</button>
+    </div>
+
+    <!-- Page 5: Block Touching Domain -->
+    <div id="page5" class="page">
+        <h1>Block Touching Domain</h1>
+        <p>Now you will be introduced to the first domain, the block touching domain.</p>
+        <div class="video-container">
+            <div class="link-container">
+                <a href="" id="blockTouchingVideoLink" target="_blank" class="button green">Play Block Touching Video</a>
+            </div>
+        </div>
+        <p><strong>Instructions:</strong></p>
+        <ul>
+            <li>You may only use green buttons. </li>
+            <li>Red buttons are temporarily disabled</li>
+            <li>When using reset and open/close hand actions, the robot will move autonomously</li>
+            <li>You should step back during autonomous movements</li>
+            <li>You have 15 minutes to teach all three tasks</li>
+        </ul>
+        <button onclick="nextPage()">Continue</button>
+    </div>
+
+    <!-- Page 6: Feedback Videos (Conditionally Shown) -->
+    <div id="page6" class="page">
+        <h1>Additional Tutorial</h1>
+        <div id="feedbackNone">
+            <p><strong>Note:</strong> Please click continue. </p>
+        </div>
+        <div id="feedbackF" style="display:none;">
+            <p>You will receive large language model (LLM) feedback in this study. Here is a video introducing what that feedback will look like.</p>
+            <div class="video-container">
+                <div class="link-container">
+                    <a href="" id="llmFeedbackVideoLink" target="_blank" class="button green">Play LLM Feedback Video</a>
+                </div>
+            </div>
+        </div>
+        <div id="feedbackA" style="display:none;">
+            <p>You will receive augmented reality feedback in this study. Here is a video introducing what that feedback will look like.</p>
+            <div class="video-container">
+                <div class="link-container">
+                    <a href="" id="arFeedbackVideoLink" target="_blank" class="button green">Play AR Feedback Video</a>
+                </div>
+            </div>
+        </div>
+        <div id="feedbackB" style="display:none;">
+            <p>You will have two types of feedback in this study. The first is large language model (LLM) feedback, and the second is augmented reality.</p>
+            <div class="video-container">
+                <div class="link-container">
+                    <a href="" id="llmFeedbackVideoLink2" target="_blank" class="button green">Play LLM Feedback Video</a>
+                </div>
+                <div class="link-container">
+                    <a href="" id="arFeedbackVideoLink2" target="_blank" class="button green">Play AR Feedback Video</a>
+                </div>
+            </div>
+        </div>
+        <div id="hololensSetup" style="display:none;">
+            <p><strong>HoloLens Setup Instructions:</strong></p>
+            <ul>
+                <li>Feel free to adjust the HoloLense to your head</li>
+                <li>When you grab it, make sure not to cover any sensors.</li>
+                <li>You don't need to wear it the whole time. You should only wear it when using AR feedback.</li>
+            </ul>
+        </div>
+        <button onclick="nextPage()">Continue</button>
+    </div>
+
+    <!-- Page 7: First Domain Introduction -->
+    <div id="page7" class="page">
+        <h1 id="firstDomainTitle">First Domain Introduction</h1>
+        <p>The next domain will now be introduced in a brief video.</p>
+        <div class="video-container">
+            <div class="link-container">
+                <a href="" id="firstDomainVideoLink" target="_blank" class="button green">Play First Domain Video</a>
+            </div>
+            <p><strong>Instructions:</strong></p>
+            <ul>
+                <li id="firstDomainScoop" style="display:none;">The scoop should always be held in the gripper in this domain. You should not attempt to open/close gripper.</li>
+            </ul>
+        </div>
+        <p>You have 40 minutes to teach this domain.</p>
+        <button onclick="nextPage()">Continue</button>
+    </div>
+
+    <!-- Page 8: Second Domain Introduction -->
+    <div id="page8" class="page">
+        <h1 id="secondDomainTitle">Second Domain Introduction</h1>
+        <p>If you need a bathroom break, you may take a short break now. The bathroom is on your right when you exit through that door. Please try to be back within 5 minutes.</p>
+        <p><strong>Instructions for researcher:</strong> Use this time to set up the second domain.</p>
+        <div class="video-container">
+            <p>The next (and final) domain will now be introduced in a video.</p>
+            <div class="link-container">
+                <a href="" id="secondDomainVideoLink" target="_blank" class="button green">Play Second Domain Video</a>
+            </div>
+            <p><strong>Instructions:</strong></p>
+            <ul>
+                <li id="secondDomainScoop" style="display:none;">The scoop should always be held in the gripper in this domain. You should not attempt to open/close gripper.</li>
+            </ul>
+        </div>
+        <p>Alright, you are free to begin. You have 40 minutes to teach this domain.</p>
+        <button onclick="nextPage()">Continue</button>
+    </div>
+
+    <!-- Page 9: Post-Teaching Second Domain p1 -->
+    <div id="page9" class="page">
+        <h1>Post-Teaching Second Domain (Part 1)</h1>
+        <p><strong>Domain: <span id="postTeachingSecondDomain"></span></strong></p>
+        <p>Now, I want you to reflect on what you taught in the second domain while you answer some questions.</p>
+        <div class="link-container">
+            <a href="" id="postTeachingQualtrics" target="_blank" class="button green">Open Post-Teaching Survey</a>
+        </div>
+        <p><strong>Instructions:</strong></p>
+        <ul>
+            <li>Split screen with qualtrics and interface</li>
+        </ul>
+        <div class="task">
+            <p>Take a look at task 1, which you taught previously, and answer question 1.</p>
+            <p id="arOption1" style="display:none;"><strong>Note:</strong> You have the option to evaluate the task using AR.</p>
+        </div>
+        <div class="task">
+            <p>Take a look at task 2, which you taught previously, and answer question 2.</p>
+        </div>
+        <div class="task">
+            <p>Now, take a moment to teach tasks 3-4 using the skills you taught previously.</p>
+            <p>After teaching each task, please answer the corresponding question.</p>
+        </div>
+        <button onclick="nextPage()">Continue</button>
+    </div>
+
+    <!-- Page 10: Post-Teaching First Domain p1 -->
+    <div id="page10" class="page">
+        <h1>Post-Teaching First Domain (Part 1)</h1>
+        <p><strong>Domain: <span id="postTeachingFirstDomain"></span></strong></p>
+        <p>Great. We will do the same thing for the first domain.</p>
+        <p><strong>Instructions for researcher:</strong></p>
+        <ul>
+            <li>Switch interface to first domain</li>
+            <li>Set up first domain on table</li>
+        </ul>
+        <div class="task">
+            <p>Take a look at task 1, which you taught previously, and answer question 1.</p>
+        </div>
+        <div class="task">
+            <p>Take a look at task 2, which you taught previously, and answer question 2.</p>
+        </div>
+        <div class="task">
+            <p>Now, take a moment to teach tasks 3-4 using the skills you taught previously.</p>
+            <p>After teaching each task, please answer the corresponding question.</p>
+        </div>
+        <p><strong>Environment change:</strong></p>
+        <ul>
+            <li>I am now going to move things around.</li>
+            <li>Change environment to second configuration for domain one</li>
+        </ul>
+        <div class="task">
+            <p>Let's look at the tasks you taught, but in a new environment.</p>
+            <p>Notice that here, task 5, which you taught previously, but is not being used in this new environment, and answer question 5.</p>
+        </div>
+        <div class="task">
+            <p>Take a look at the task 6, which you taught previously, but is not being used in this new environment, and answer question 6.</p>
+        </div>
+        <button onclick="nextPage()">Continue</button>
+    </div>
+
+    <!-- Page 11: Post-Teaching Second Domain p2 -->
+    <div id="page11" class="page">
+        <h1>Post-Teaching Second Domain (Part 2)</h1>
+        <p><strong>Domain: <span id="postTeachingSecondDomain2"></span></strong></p>
+        <p>Let's go back to the first domain, but I will move things around once again.</p>
+        <p><strong>Instructions for researcher:</strong></p>
+        <ul>
+            <li>Switch interface to first domain</li>
+            <li>Set up second domain on table, with config 2</li>
+        </ul>
+        <div class="task">
+            <p>Once more, let's look at the tasks you taught, but in a new environment.</p>
+            <p>Take a look at the task 5, which you taught previously, but is not being used in this new environment, and answer question 5.</p>
+        </div>
+        <div class="task">
+            <p>Take a look at the task 6, which you taught previously, but is not being used in this new environment, and answer question 6.</p>
+        </div>
+        <button onclick="nextPage()">Continue</button>
+    </div>
+
+    <!-- Page 12: Post-Study Survey -->
+    <div id="page12" class="page">
+        <h1>Post-Study Survey</h1>
+        <p>Next, you will take a final survey.</p>
+        <div class="link-container">
+            <a href="" id="finalSurveyLink" target="_blank" class="button green">Open Final Survey</a>
+        </div>
+        <button onclick="nextPage()">Continue</button>
+    </div>
+
+    <!-- Page 13: Interview -->
+    <div id="page13" class="page">
+        <h1>Interview</h1>
+        <p>We will conclude with a short interview.</p>
+        <p><strong>Instructions for researcher:</strong></p>
+        <ul>
+            <li>Start recording using mp3</li>
+        </ul>
+        <div class="interview-questions">
+            <h3>Interview Questions:</h3>
+            <ol>
+                <li>What did you think about the study?</li>
+                <li>Did you feel any information was missing from the explanations provided to you in this study?</li>
+                <li>Describe your experience using the interface.</li>
+                <li>Was there any point during the study when you were confused? If yes, why?</li>
+                <li>What was your overall impression of the robot?</li>
+                <li>Do you think the robot successfully learned what you were trying to teach?</li>
+                <li>Did you feel like you were on the same page with the robot during the study?</li>
+                <li>Do you think that you were able to better teach the robot as the experiment progressed?</li>
+                <li id="feedbackQuestion" style="display:none;">Do you think that you were able to better teach the robot as a result of the feedback that the interface provided?</li>
+                <li>What do you think the robot can do as a result of your teaching? What can't the robot do?</li>
+                <li>Would you want to interact with the robot/interface in the future? Why/why not?</li>
+                <li>Any other feedback?</li>
+            </ol>
+        </div>
+        <button onclick="nextPage()">Continue</button>
+    </div>
+
+    <!-- Page 14: Study Conclusion -->
+    <div id="page14" class="page">
+        <h1>Study Conclusion</h1>
+        <p>That concludes the study! Thank you so much for participating.</p>
+        <p><strong>Instructions for researcher:</strong></p>
+        <ul>
+            <li>Stop timer</li>
+            <li>Ensure all data is saved</li>
+            <li>Thank participant for their time</li>
+        </ul>
+        <button onclick="resetStudy()" class="red">Reset Study</button>
+    </div>
+
+    <script>
+        // Study configuration
+        let currentPage = 0;
+        let studyConfig = {
+            domainOrder: "",
+            feedbackCondition: "",
+            domain1: "",
+            domain2: ""
+        };
+
+        // Video and survey links - FILL THESE IN
+        const videoLinks = {
+            introVideo: "https://gatech.box.com/s/vxldsodwcfp5mz8s12sqb1qo9db0th0q",  // Fill in with your intro video URL
+            blockTouchingVideo: "https://gatech.box.com/s/mtqc7hwvij4v5bgress0leqgpykgvh96",  // Fill in with your block touching video URL
+            llmFeedbackVideo: "https://gatech.box.com/s/v6m4skm1pzd2v4cepsbpjpyb4y5dbwx0",  // Fill in with your LLM feedback video URL
+            arFeedbackVideo: "https://gatech.box.com/s/xsnhxfu3gqifvhezabb0mfwpk3f976tn",  // Fill in with your AR feedback video URL
+            soilMixingVideo: "https://gatech.box.com/s/4bb2mt7hnwomidp4hcdsk3mecsqyte4r",  // Fill in with your soil mixing video URL
+            tableSettingVideo: "https://gatech.box.com/s/jjoikvbhe3e8gp0vvjdh6g1wl4rfkwh3"  // Fill in with your table setting video URL
+        };
+
+        const surveyLinks = {
+            compensationSurvey: "https://gatech.co1.qualtrics.com/jfe/form/SV_9t4zZq8qTkwQYZw",  // Fill in with your compensation survey URL
+            initialSurvey: "https://gatech.co1.qualtrics.com/jfe/form/SV_aXCQwyVGS5Em2Mu",  // Fill in with your initial survey URL
+            postTeachingSurvey: "https://gatech.co1.qualtrics.com/jfe/form/SV_01Eu26zfWJ0HUay",  // Fill in with your post-teaching survey URL
+            finalSurvey: "https://gatech.co1.qualtrics.com/jfe/form/SV_b7UCM4j2tKT1NQO"  // Fill in with your final survey URL
+        };
+
+        // Initialize study based on setup selections
+        function setupStudy() {
+            // Get values from setup form
+            studyConfig.domainOrder = document.getElementById("domainOrder").value;
+            studyConfig.feedbackCondition = document.getElementById("feedbackCondition").value;
+            
+            // Set domains based on order
+            if (studyConfig.domainOrder === "ST") {
+                studyConfig.domain1 = "Soil Mixing";
+                studyConfig.domain2 = "Table Setting";
+            } else {
+                studyConfig.domain1 = "Table Setting";
+                studyConfig.domain2 = "Soil Mixing";
+            }
+            
+            // // Update displayed values
+            // document.getElementById("displayDomain1").textContent = studyConfig.domain1;
+            // document.getElementById("displayDomain2").textContent = studyConfig.domain2;
+            
+            // Set domain-specific content
+            document.getElementById("firstDomainTitle").textContent = studyConfig.domain1 + " Domain Introduction";
+            document.getElementById("secondDomainTitle").textContent = studyConfig.domain2 + " Domain Introduction";
+            document.getElementById("postTeachingFirstDomain").textContent = studyConfig.domain1;
+            document.getElementById("postTeachingSecondDomain").textContent = studyConfig.domain2;
+            document.getElementById("postTeachingSecondDomain2").textContent = studyConfig.domain2;
+            
+            // Set up video links
+            document.getElementById("introVideoLink").href = videoLinks.introVideo;
+            document.getElementById("blockTouchingVideoLink").href = videoLinks.blockTouchingVideo;
+            document.getElementById("compensationSurveyLink").href = surveyLinks.compensationSurvey;
+            document.getElementById("initialSurveyLink").href = surveyLinks.initialSurvey;
+            document.getElementById("postTeachingQualtrics").href = surveyLinks.postTeachingSurvey;
+            document.getElementById("finalSurveyLink").href = surveyLinks.finalSurvey;
+            
+            // Set domain-specific video links
+            document.getElementById("firstDomainVideoLink").href = 
+                studyConfig.domain1 === "Soil Mixing" ? videoLinks.soilMixingVideo : videoLinks.tableSettingVideo;
+            document.getElementById("secondDomainVideoLink").href = 
+                studyConfig.domain2 === "Soil Mixing" ? videoLinks.soilMixingVideo : videoLinks.tableSettingVideo;
+            
+            // Set feedback video links
+            if (studyConfig.feedbackCondition === "F" || studyConfig.feedbackCondition === "B") {
+                document.getElementById("llmFeedbackVideoLink").href = videoLinks.llmFeedbackVideo;
+                if (studyConfig.feedbackCondition === "B") {
+                    document.getElementById("llmFeedbackVideoLink2").href = videoLinks.llmFeedbackVideo;
+                    document.getElementById("arFeedbackVideoLink2").href = videoLinks.arFeedbackVideo;
+                }
+            }
+            if (studyConfig.feedbackCondition === "A") {
+                document.getElementById("arFeedbackVideoLink").href = videoLinks.arFeedbackVideo;
+            }
+            
+            // Show/hide scoop instructions based on domain
+            document.getElementById("firstDomainScoop").style.display = 
+                studyConfig.domain1 === "Soil Mixing" ? "block" : "none";
+            document.getElementById("secondDomainScoop").style.display = 
+                studyConfig.domain2 === "Soil Mixing" ? "block" : "none";
+            
+            // Set up feedback condition displays
+            document.getElementById("feedbackNone").style.display = "none";
+            document.getElementById("feedbackF").style.display = "none";
+            document.getElementById("feedbackA").style.display = "none";
+            document.getElementById("feedbackB").style.display = "none";
+            document.getElementById("hololensSetup").style.display = "none";
+            document.getElementById("arOption1").style.display = "none";
+            document.getElementById("feedbackQuestion").style.display = "none";
+            
+            // Configure feedback condition
+            switch (studyConfig.feedbackCondition) {
+                case "N":
+                    document.getElementById("feedbackNone").style.display = "block";
+                    break;
+                case "F":
+                    document.getElementById("feedbackF").style.display = "block";
+                    document.getElementById("feedbackQuestion").style.display = "block";
+                    break;
+                case "A":
+                    document.getElementById("feedbackA").style.display = "block";
+                    document.getElementById("hololensSetup").style.display = "block";
+                    document.getElementById("arOption1").style.display = "block";
+                    document.getElementById("feedbackQuestion").style.display = "block";
+                    break;
+                case "B":
+                    document.getElementById("feedbackB").style.display = "block";
+                    document.getElementById("hololensSetup").style.display = "block";
+                    document.getElementById("arOption1").style.display = "block";
+                    document.getElementById("feedbackQuestion").style.display = "block";
+                    break;
+            }
+            
+            // Move to first page
+            nextPage();
+        }
+
+        // Navigate to next page
+        function nextPage() {
+            // Hide current page
+            document.getElementById("page" + currentPage).classList.remove("active");
+            // Move to next page
+            currentPage++;
+            // Show next page
+            document.getElementById("page" + currentPage).classList.add("active");
+        }
+
+        // Reset study (go back to page 0)
+        function resetStudy() {
+            // Hide current page
+            document.getElementById("page" + currentPage).classList.remove("active");
+            // Reset to page 0
+            currentPage = 0;
+            // Show page 0
+            document.getElementById("page0").classList.add("active");
+        }
+    </script>
+</body>
+</html>
