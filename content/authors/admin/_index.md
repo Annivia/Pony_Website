@@ -18,15 +18,15 @@ organizations:
     url: https://www.gatech.edu/
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include human-robot interaction, explainable artificial intelligence, and natural language processing.
+bio: My research interests include foundation models, reasoning models, and robotics.
 
 # Interests to show in About widget
 interests:
   - Foundation Models
   - Reasoning Models
   - Interpretability
-  - Scaling Laws
-  - Emergent Intelligence
+  - Robotics
+  - Physical Intelligence
 
 # Education to show in About widget
 education:
@@ -76,7 +76,7 @@ email: 'zhang.xijia@gatech.edu'
 highlight_name: true
 ---
 
-Hi, I’m Xijia Polina Zhang, a Ph.D. student at Georgia Institute of Technology advised by Professor Matthew Gombolay. I’m interested in how reasoning capabilities emerge and evolve in large-scale foundation models, and whether we could meaningfully interfere with, interpret and align them. I’m also actively involved in work on explainable AI, human robot interaction, and reinforcement learning.
+Hi, I’m Xijia Polina Zhang, a first year Ph.D. student at Georgia Institute of Technology. I’m currently interested in how reasoning capabilities such as latent Chain-of-Thought (CoT) can enhance vision-language-action (VLA) models, and whether embodied reasoning traces can be meaningfully interfered, interpreted, or aligned. I’m also actively involved in work on explainable AI, human robot interaction, and reinforcement learning.
 
 I publish under the name Zhang Xi-Jia, similar to the convention followed by {{< staticref "https://en.wikipedia.org/wiki/Fei-Fei_Li" "newtab" >}}Li Fei-Fei{{< /staticref >}}. In many Asian cultures, surnames are common and not reliable as personal identifiers. My surname Zhang, for example, is shared by over 100 million people worldwide.
 
